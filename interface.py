@@ -23,9 +23,6 @@ nightBgImage = ImageTk.PhotoImage(Image.open("./assets/img/night_bg.png"))
 nightBg = canvas.create_image(HALF_WIDTH - 10, 0, image=nightBgImage, anchor=tk.NW)
 
 
-todayIndex = 1
-selectedIndex = 1
-
 # 날짜 선택 UI
 BOX_SPACING = 15
 BOX_WIDTH = 110
@@ -34,19 +31,41 @@ todayBgImage = ImageTk.PhotoImage(Image.open('./assets/img/today_bg.png'))
 selectedTodayBgImage = ImageTk.PhotoImage(Image.open('./assets/img/selected_today_bg.png'))
 
 otherDayBgImage = ImageTk.PhotoImage(Image.open('./assets/img/other_day_bg.png'))
-selectedOtherDayBgImage = ImageTk.PhotoImage(Image.open('./assets/img/other_day_bg.png'))
+selectedOtherDayBgImage = ImageTk.PhotoImage(Image.open('./assets/img/selected_other_day_bg.png'))
 
+dayButtons = []
 
-for i in range(7):
-    x = BOX_SPACING + i * (BOX_WIDTH + BOX_SPACING)
-    if (i == todayIndex and i == selectedIndex):
-      image = selectedTodayBgImage
-    elif (i == todayIndex):
-      image = todayBgImage
-    elif (i == selectedIndex):
-      image = otherDayBgImage
-    else:
-      image = otherDayBgImage
-    Button = canvas.create_image(x, 30, image=image, anchor=tk.NW)
+todayIndex = 1
+# 초기 선택은 오늘 날짜
+selectedIndex = 1
+
+def onDayClick(event, newIndex):
+  print(event, newIndex)
+  global selectedIndex, dayButtons
+  selectedIndex = newIndex
+  changeDayBg()
+
+def changeDayBg():
+  for index in range(7):
+    image = getDayImage(index)
+    canvas.itemconfig(dayButtons[index], image = image)
+
+def getDayImage(index):
+  if (index == todayIndex and index == selectedIndex):
+    image = selectedTodayBgImage
+  elif (index == todayIndex):
+    image = todayBgImage
+  elif (index == selectedIndex):
+    image = selectedOtherDayBgImage
+  else:
+    image = otherDayBgImage
+  return image
+
+for index in range(7):
+    x = BOX_SPACING + index * (BOX_WIDTH + BOX_SPACING)
+    image = getDayImage(index)
+    
+    dayButtons.insert(index, canvas.create_image(x, 30, image=image, anchor=tk.NW))
+    canvas.tag_bind(dayButtons[index], "<Button>", lambda event, index=index: onDayClick(event, index)) 
 
 root.mainloop()
