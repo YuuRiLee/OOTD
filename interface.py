@@ -40,13 +40,14 @@ selectedOtherDayBgImage = ImageTk.PhotoImage(selectedOtherDay.resize((126, 202),
 dayTextBgImage = Image.open('./assets/img/day_text_bg.png')
 dayButtons = []
 dayTextImages = []
+dayWeatherImages = []
 
 todayIndex = 1
 # 초기 선택은 오늘 날짜
 selectedIndex = 1
 
 def onDayClick(event, newIndex):
-  print(event, newIndex)
+  print(newIndex)
   global selectedIndex
   selectedIndex = newIndex
   changeDayBg()
@@ -67,6 +68,12 @@ def getDayImage(index):
     image = otherDayBgImage
   return image
 
+def getWeatherImage(weather):
+  image = ImageTk.PhotoImage(Image.open(f'./assets/icon/{weather}.png'))
+  dayWeatherImages.append(image)
+  
+  return image
+    
 def createDayLabel():
   global dayTextImages
   image_with_text = dayTextBgImage.copy()
@@ -87,21 +94,28 @@ def createDayLabel():
 for index in range(7):
     createDayLabel()
     dayImage = getDayImage(index)
+    # FIXME 실제 데이터로 변환
+    dayWeatherImage = getWeatherImage('01d')
+    nightWeatherImage = getWeatherImage('01n')
     
     x = BOX_SPACING + index * (BOX_WIDTH + BOX_SPACING)
     boxX = x + BOX_SPACING
     boxY = 30
     boxCenterY = BOX_HEIGHT / 2 + 30
     labelX = (BOX_WIDTH - dayTextImages[index].width()) / 2
-    
+
     dayButton = canvas.create_image(x, boxY, image=dayImage, anchor=tk.NW)
     dayText = canvas.create_image(x + labelX, boxY + 10, image=dayTextImages[index], anchor='nw')
-    canvas.create_text(boxX + 12, boxY + 56, text="오전", fill="#000000", font=('NanumGothicExtraBold', 12))
+    dayWeather = canvas.create_image(x + 42, boxY + 34, image=dayWeatherImage, anchor='nw')
+    nightWeather = canvas.create_image(x + 42, boxCenterY + 16, image=nightWeatherImage, anchor='nw')
+    
+    dayButtons.insert(index, (dayButton, dayText))
+    
+    canvas.create_text(boxX + 12, boxY + 56, text="낮", fill="#000000", font=('NanumGothicExtraBold', 12))
     canvas.create_line(boxX, boxCenterY, boxX + 82, boxCenterY, fill="#9A9A9A", width=3)
-    canvas.create_text(boxX + 12, boxCenterY + 40, text="오후", fill="#000000", font=('NanumGothicExtraBold', 12))
+    canvas.create_text(boxX + 12, boxCenterY + 40, text="밤", fill="#000000", font=('NanumGothicExtraBold', 12))
 
     canvas.tag_bind(dayButton, "<Button>", lambda event, index=index: onDayClick(event, index))
     
-    dayButtons.insert(index, (dayButton, dayText))
 
 root.mainloop()
