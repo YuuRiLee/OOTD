@@ -1,4 +1,8 @@
 import forecast
+import interface
+
+WIDTH = 892
+HEIGHT = 630
 
 soogsil = {
     "latitude": 37.494705526855,
@@ -11,3 +15,5 @@ if __name__ == "__main__":
         soogsil["longitude"],
         50
     )
+
+interface.createCanvas()

@@ -4,11 +4,13 @@
 ### Use python
 ```
 pip install pillow
+pip install requests
 ```
 
 ### Use python3
 ```
 pip3 install pillow
+pip3 install requests
 ```
 ## 실행
 ### Use python
