@@ -29,10 +29,12 @@ BOX_SPACING = 15
 BOX_WIDTH = 110
 
 todayBgImage = ImageTk.PhotoImage(Image.open('./assets/img/today_bg.png'))
-selectedTodayBgImage = ImageTk.PhotoImage(Image.open('./assets/img/selected_today_bg.png'))
+selectedToday = Image.open('./assets/img/selected_today_bg.png')
+selectedTodayBgImage = ImageTk.PhotoImage(selectedToday.resize((126, 202), Image.ANTIALIAS))
 
 otherDayBgImage = ImageTk.PhotoImage(Image.open('./assets/img/other_day_bg.png'))
-selectedOtherDayBgImage = ImageTk.PhotoImage(Image.open('./assets/img/selected_other_day_bg.png'))
+selectedOtherDay = Image.open('./assets/img/selected_other_day_bg.png')
+selectedOtherDayBgImage = ImageTk.PhotoImage(selectedOtherDay.resize((126, 202), Image.ANTIALIAS))
 
 dayTextBgImage = Image.open('./assets/img/day_text_bg.png')
 dayButtons = []
@@ -68,8 +70,16 @@ def createDayLabel():
   global dayTextImages
   image_with_text = dayTextBgImage.copy()
   draw = ImageDraw.Draw(image_with_text)
-  font = ImageFont.load_default()
-  draw.text((10, 10), f"Day {index+1}", font=font, fill=(255, 255, 255))
+  font = ImageFont.truetype('./assets/font/NanumGothicExtraBold.ttf', 12)
+  # FIXME 실 데이터로 변경
+  text = f"6/{index+1} (목)"
+  bbox = font.getbbox(text)
+  textWidth = bbox[2]-bbox[0]
+  x = (dayTextBgImage.width - textWidth) / 2
+  # FIXME 실 데이터로 변경
+  isHoliday = False
+  textColor = '#B00505' if isHoliday else '#19007E' 
+  draw.text((x, 2), text, font=font, fill=textColor)
   dayTextImage = ImageTk.PhotoImage(image_with_text)
   dayTextImages.append(dayTextImage)  # Keep a reference to the image
   
@@ -78,9 +88,10 @@ for index in range(7):
     dayImage = getDayImage(index)
     
     x = BOX_SPACING + index * (BOX_WIDTH + BOX_SPACING)
+    labelX = (BOX_WIDTH - dayTextImages[index].width()) / 2
     
     dayButton = canvas.create_image(x, 30, image=dayImage, anchor=tk.NW)
-    dayText = canvas.create_image(x, 30, image=dayTextImages[index], anchor='nw')
+    dayText = canvas.create_image(x + labelX, 40, image=dayTextImages[index], anchor='nw')
     
     canvas.tag_bind(dayButton, "<Button>", lambda event, index=index: onDayClick(event, index))
     
