@@ -22,7 +22,7 @@ def forecast(
     response = remoteAPI.getRequest("/forecast", parameters)
     jsonResponse = json.loads(response.text)
     weathers = weathersForDay(jsonResponse["list"])
-    print(json.dumps(weathers, indent=4))
+    print(asDomain(weathers))
 
 def weathersForDay(weatherList):
     weathers = {}
@@ -34,17 +34,21 @@ def weathersForDay(weatherList):
         else:
             weathers[date] = [weather]
     return weathers
+def maximumTemperature(weathers):
+    return max(list(map(lambda value: value.get("main").get("temp_max"), weathers)))
+def minimumTemperature(weathers):
+    return min(list(map(lambda value: value.get("main").get("temp_min"), weathers)))
 
-# def maximumTemperature(weather):
-#     return min(map(minimumTemperature, weather.values()))
-#
-#     # maximumTemperature = weather["temp_max"]
-#     # # minimumTemperature = weather["temp_min"]
-#     # return maximumTemperature
-#
-# def minimumTemperature(weather):
-#     return weather["temp_min"]
-
+def asDomain(weatherList):
+    data = {}
+    for weathers in weatherList.items():
+        data.update({
+            weathers[0]: {
+                "maximumTemperature": maximumTemperature(weathers[1]),
+                "minimumTemperature": minimumTemperature(weathers[1])
+            }
+        })
+    return data
 
 
 
