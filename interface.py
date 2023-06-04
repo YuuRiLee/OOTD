@@ -109,13 +109,13 @@ for index in range(7):
     dayWeather = canvas.create_image(x + 42, boxY + 34, image=dayWeatherImage, anchor='nw')
     nightWeather = canvas.create_image(x + 42, boxCenterY + 16, image=nightWeatherImage, anchor='nw')
     
-    dayButtons.insert(index, (dayButton, dayText))
+    dayButtons.insert(index, (dayButton, dayText, dayWeather, nightWeather))
     
     canvas.create_text(boxX + 12, boxY + 56, text="낮", fill="#000000", font=('NanumGothicExtraBold', 12))
     canvas.create_line(boxX, boxCenterY, boxX + 82, boxCenterY, fill="#9A9A9A", width=3)
     canvas.create_text(boxX + 12, boxCenterY + 40, text="밤", fill="#000000", font=('NanumGothicExtraBold', 12))
 
-    canvas.tag_bind(dayButton, "<Button>", lambda event, index=index: onDayClick(event, index))
-    
+    for item in dayButtons[index]:
+      canvas.tag_bind(item, "<Button>", lambda event, index=index: onDayClick(event, index))
 
 root.mainloop()
