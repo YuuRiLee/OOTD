@@ -1,5 +1,4 @@
 import tkinter as tk
-from tkinter import Label
 from PIL import Image, ImageDraw, ImageFont, ImageTk
 
 WIDTH = 892
@@ -38,16 +37,22 @@ selectedOtherDay = Image.open('./assets/img/selected_other_day_bg.png')
 selectedOtherDayBgImage = ImageTk.PhotoImage(selectedOtherDay.resize((126, 202), Image.LANCZOS))
 
 dayTextBgImage = Image.open('./assets/img/day_text_bg.png')
+
+leftSpeechBubblesImage = ImageTk.PhotoImage(Image.open('./assets/img/left_speech_bubbles.png'))
+rightSpeechBubblesImage = ImageTk.PhotoImage(Image.open('./assets/img/right_speech_bubbles.png'))
+
 dayButtons = []
 dayTextImages = []
 dayWeatherImages = []
 
+bodyButtons = []
+
 todayIndex = 1
 # 초기 선택은 오늘 날짜
 selectedIndex = 1
+selectedDay = 'day'
 
-def onDayClick(event, newIndex):
-  print(newIndex)
+def onDayClick(_event, newIndex):
   global selectedIndex
   selectedIndex = newIndex
   changeDayBg()
@@ -74,7 +79,7 @@ def getWeatherImage(weather):
   
   return image
     
-def createDayLabel():
+def createDayLabel(index):
   global dayTextImages
   image_with_text = dayTextBgImage.copy()
   draw = ImageDraw.Draw(image_with_text)
@@ -91,8 +96,9 @@ def createDayLabel():
   dayTextImage = ImageTk.PhotoImage(image_with_text)
   dayTextImages.append(dayTextImage)  # Keep a reference to the image
 
-for index in range(7):
-    createDayLabel()
+def crateDays():
+  for index in range(7):
+    createDayLabel(index)
     dayImage = getDayImage(index)
     # FIXME 실제 데이터로 변환
     dayWeatherImage = getWeatherImage('01d')
@@ -117,5 +123,30 @@ for index in range(7):
 
     for item in dayButtons[index]:
       canvas.tag_bind(item, "<Button>", lambda event, index=index: onDayClick(event, index))
+
+def onBodyClick(_event, dayType):
+  global selectedDay
+  selectedDay = dayType
+  image = getSpeechImage()
+  canvas.itemconfig(bodyButtons[0], image = image)
+
+def getSpeechImage():
+  return leftSpeechBubblesImage if selectedDay == 'day' else rightSpeechBubblesImage
+
+def createBody():
+  global bodyImage
+  bodyImage = ImageTk.PhotoImage(Image.open('./assets/img/body.png'))
+  speechBgImage = getSpeechImage()
+  dayBodyButton = canvas.create_image(136, 216, image=bodyImage, anchor='nw')
+  nightBodyButton = canvas.create_image(595, 216, image=bodyImage, anchor='nw')
+  speechImage = canvas.create_image(42, 407, image=speechBgImage, anchor='nw')
+
+  bodyButtons.insert(0, speechImage)
+
+  canvas.tag_bind(dayBodyButton, "<Button>", lambda event: onBodyClick(event, 'day'))
+  canvas.tag_bind(nightBodyButton, "<Button>", lambda event: onBodyClick(event, 'night'))
+  
+crateDays()
+createBody()
 
 root.mainloop()
