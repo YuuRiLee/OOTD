@@ -1,5 +1,6 @@
 import tkinter as tk
-from PIL import Image, ImageTk
+from tkinter import Label
+from PIL import Image, ImageDraw, ImageFont, ImageTk
 
 WIDTH = 892
 HEIGHT = 630
@@ -33,7 +34,9 @@ selectedTodayBgImage = ImageTk.PhotoImage(Image.open('./assets/img/selected_toda
 otherDayBgImage = ImageTk.PhotoImage(Image.open('./assets/img/other_day_bg.png'))
 selectedOtherDayBgImage = ImageTk.PhotoImage(Image.open('./assets/img/selected_other_day_bg.png'))
 
+dayTextBgImage = Image.open('./assets/img/day_text_bg.png')
 dayButtons = []
+dayTextImages = []
 
 todayIndex = 1
 # 초기 선택은 오늘 날짜
@@ -41,14 +44,14 @@ selectedIndex = 1
 
 def onDayClick(event, newIndex):
   print(event, newIndex)
-  global selectedIndex, dayButtons
+  global selectedIndex
   selectedIndex = newIndex
   changeDayBg()
 
 def changeDayBg():
   for index in range(7):
     image = getDayImage(index)
-    canvas.itemconfig(dayButtons[index], image = image)
+    canvas.itemconfig(dayButtons[index][0], image = image)
 
 def getDayImage(index):
   if (index == todayIndex and index == selectedIndex):
@@ -61,11 +64,26 @@ def getDayImage(index):
     image = otherDayBgImage
   return image
 
+def createDayLabel():
+  global dayTextImages
+  image_with_text = dayTextBgImage.copy()
+  draw = ImageDraw.Draw(image_with_text)
+  font = ImageFont.load_default()
+  draw.text((10, 10), f"Day {index+1}", font=font, fill=(255, 255, 255))
+  dayTextImage = ImageTk.PhotoImage(image_with_text)
+  dayTextImages.append(dayTextImage)  # Keep a reference to the image
+  
 for index in range(7):
-    x = BOX_SPACING + index * (BOX_WIDTH + BOX_SPACING)
-    image = getDayImage(index)
+    createDayLabel()
+    dayImage = getDayImage(index)
     
-    dayButtons.insert(index, canvas.create_image(x, 30, image=image, anchor=tk.NW))
-    canvas.tag_bind(dayButtons[index], "<Button>", lambda event, index=index: onDayClick(event, index)) 
+    x = BOX_SPACING + index * (BOX_WIDTH + BOX_SPACING)
+    
+    dayButton = canvas.create_image(x, 30, image=dayImage, anchor=tk.NW)
+    dayText = canvas.create_image(x, 30, image=dayTextImages[index], anchor='nw')
+    
+    canvas.tag_bind(dayButton, "<Button>", lambda event, index=index: onDayClick(event, index))
+    
+    dayButtons.insert(index, (dayButton, dayText))
 
 root.mainloop()
