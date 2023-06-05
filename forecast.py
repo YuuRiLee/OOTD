@@ -1,25 +1,27 @@
+from enum import Enum
+import datetime
+import holidays
 import json
 import remoteAPI
 
-import datetime
 
 def forecast(
         latitude,
         longitude,
-        count,
         units="metric",  # api default = "standard"(Fahrenheit)
         mode="json",
-        language="kr"
+        language="kr",
+        exclude="minutely,hourly,alerts"
 ):
     parameters = {
         "lat": latitude,
         "lon": longitude,
-        "cnt": count,
         "units": units,
         "mode": mode,
-        "lang": language
+        "lang": language,
+        "exclude": exclude,
     }
-    response = remoteAPI.getRequest("/forecast", parameters)
+    response = remoteAPI.getRequest("/onecall", parameters)
     jsonResponse = json.loads(response.text)
     weathers = weathersForDay(jsonResponse["list"])
     print(asDomain(weathers))
