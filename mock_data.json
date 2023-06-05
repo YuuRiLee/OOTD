@@ -1,0 +1,354 @@
+{
+  "lat": 37.4947,
+  "lon": 126.9599,
+  "timezone": "Asia/Seoul",
+  "timezone_offset": 32400,
+  "current": {
+    "dt": 1685896375,
+    "sunrise": 1685909513,
+    "sunset": 1685962169,
+    "temp": 17.26,
+    "feels_like": 17.05,
+    "pressure": 1012,
+    "humidity": 77,
+    "dew_point": 13.19,
+    "uvi": 0,
+    "clouds": 75,
+    "visibility": 10000,
+    "wind_speed": 1.03,
+    "wind_deg": 170,
+    "weather": [
+      {
+        "id": 803,
+        "main": "Clouds",
+        "description": "튼구름",
+        "icon": "04n"
+      }
+    ]
+  },
+  "daily": [
+    {
+      "dt": 1685934000,
+      "sunrise": 1685909513,
+      "sunset": 1685962169,
+      "moonrise": 1685968080,
+      "moonset": 1685911020,
+      "moon_phase": 0.54,
+      "summary": "There will be partly cloudy today",
+      "temp": {
+        "day": 24.24,
+        "min": 17.26,
+        "max": 24.24,
+        "night": 17.88,
+        "eve": 21.13,
+        "morn": 17.61
+      },
+      "feels_like": {
+        "day": 23.87,
+        "night": 17.68,
+        "eve": 20.79,
+        "morn": 17.33
+      },
+      "pressure": 1011,
+      "humidity": 44,
+      "dew_point": 11.29,
+      "wind_speed": 7.17,
+      "wind_deg": 269,
+      "wind_gust": 10.28,
+      "weather": [
+        {
+          "id": 803,
+          "main": "Clouds",
+          "description": "튼구름",
+          "icon": "04d"
+        }
+      ],
+      "clouds": 57,
+      "pop": 0.15,
+      "uvi": 9.38
+    },
+    {
+      "dt": 1686020400,
+      "sunrise": 1685995897,
+      "sunset": 1686048605,
+      "moonrise": 1686058080,
+      "moonset": 1686001080,
+      "moon_phase": 0.57,
+      "summary": "Expect a day of partly cloudy with rain",
+      "temp": {
+        "day": 23.41,
+        "min": 16.37,
+        "max": 23.79,
+        "night": 17.92,
+        "eve": 21.19,
+        "morn": 16.57
+      },
+      "feels_like": {
+        "day": 23.06,
+        "night": 17.88,
+        "eve": 20.85,
+        "morn": 16.5
+      },
+      "pressure": 1008,
+      "humidity": 48,
+      "dew_point": 11.96,
+      "wind_speed": 5.18,
+      "wind_deg": 265,
+      "wind_gust": 7.47,
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "실 비",
+          "icon": "10d"
+        }
+      ],
+      "clouds": 76,
+      "pop": 0.27,
+      "rain": 0.12,
+      "uvi": 5.31
+    },
+    {
+      "dt": 1686106800,
+      "sunrise": 1686082284,
+      "sunset": 1686135040,
+      "moonrise": 1686147600,
+      "moonset": 1686091740,
+      "moon_phase": 0.61,
+      "summary": "Expect a day of partly cloudy with clear spells",
+      "temp": {
+        "day": 26.22,
+        "min": 17.34,
+        "max": 26.84,
+        "night": 21.81,
+        "eve": 25.04,
+        "morn": 17.88
+      },
+      "feels_like": {
+        "day": 26.22,
+        "night": 21.59,
+        "eve": 24.77,
+        "morn": 17.79
+      },
+      "pressure": 1009,
+      "humidity": 40,
+      "dew_point": 11.75,
+      "wind_speed": 4.79,
+      "wind_deg": 237,
+      "wind_gust": 5.79,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "맑음",
+          "icon": "01d"
+        }
+      ],
+      "clouds": 1,
+      "pop": 0,
+      "uvi": 8.84
+    },
+    {
+      "dt": 1686193200,
+      "sunrise": 1686168672,
+      "sunset": 1686221473,
+      "moonrise": 0,
+      "moonset": 1686182700,
+      "moon_phase": 0.65,
+      "summary": "The day will start with partly cloudy through the late morning hours, transitioning to clearing",
+      "temp": {
+        "day": 28.9,
+        "min": 19.06,
+        "max": 29.18,
+        "night": 22.32,
+        "eve": 25.8,
+        "morn": 19.06
+      },
+      "feels_like": {
+        "day": 27.79,
+        "night": 22.07,
+        "eve": 25.45,
+        "morn": 18.82
+      },
+      "pressure": 1006,
+      "humidity": 30,
+      "dew_point": 9.93,
+      "wind_speed": 5.17,
+      "wind_deg": 246,
+      "wind_gust": 5.42,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "맑음",
+          "icon": "01d"
+        }
+      ],
+      "clouds": 5,
+      "pop": 0,
+      "uvi": 7.77
+    },
+    {
+      "dt": 1686279600,
+      "sunrise": 1686255061,
+      "sunset": 1686307905,
+      "moonrise": 1686236460,
+      "moonset": 1686273600,
+      "moon_phase": 0.69,
+      "summary": "Expect a day of partly cloudy with rain",
+      "temp": {
+        "day": 26.25,
+        "min": 19.91,
+        "max": 27.99,
+        "night": 20.44,
+        "eve": 23.55,
+        "morn": 19.91
+      },
+      "feels_like": {
+        "day": 26.25,
+        "night": 20.34,
+        "eve": 23.45,
+        "morn": 19.84
+      },
+      "pressure": 1004,
+      "humidity": 51,
+      "dew_point": 15.36,
+      "wind_speed": 4.53,
+      "wind_deg": 256,
+      "wind_gust": 5.91,
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "실 비",
+          "icon": "10d"
+        }
+      ],
+      "clouds": 100,
+      "pop": 0.63,
+      "rain": 0.43,
+      "uvi": 8
+    },
+    {
+      "dt": 1686366000,
+      "sunrise": 1686341453,
+      "sunset": 1686394336,
+      "moonrise": 1686324840,
+      "moonset": 1686364380,
+      "moon_phase": 0.72,
+      "summary": "There will be rain until morning, then partly cloudy",
+      "temp": {
+        "day": 27.37,
+        "min": 18.08,
+        "max": 27.37,
+        "night": 22.98,
+        "eve": 25.16,
+        "morn": 18.12
+      },
+      "feels_like": {
+        "day": 27.14,
+        "night": 22.59,
+        "eve": 24.91,
+        "morn": 18.29
+      },
+      "pressure": 1005,
+      "humidity": 40,
+      "dew_point": 12.84,
+      "wind_speed": 3.95,
+      "wind_deg": 244,
+      "wind_gust": 3.64,
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "실 비",
+          "icon": "10d"
+        }
+      ],
+      "clouds": 33,
+      "pop": 0.93,
+      "rain": 2.49,
+      "uvi": 8
+    },
+    {
+      "dt": 1686452400,
+      "sunrise": 1686427846,
+      "sunset": 1686480765,
+      "moonrise": 1686413040,
+      "moonset": 1686454980,
+      "moon_phase": 0.75,
+      "summary": "The day will start with partly cloudy through the late morning hours, transitioning to clearing",
+      "temp": {
+        "day": 28.47,
+        "min": 19.35,
+        "max": 29.21,
+        "night": 22.95,
+        "eve": 25.3,
+        "morn": 19.35
+      },
+      "feels_like": {
+        "day": 27.67,
+        "night": 22.61,
+        "eve": 24.9,
+        "morn": 19.17
+      },
+      "pressure": 1008,
+      "humidity": 34,
+      "dew_point": 11.44,
+      "wind_speed": 5.03,
+      "wind_deg": 267,
+      "wind_gust": 5.9,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "맑음",
+          "icon": "01d"
+        }
+      ],
+      "clouds": 0,
+      "pop": 0.34,
+      "uvi": 8
+    },
+    {
+      "dt": 1686538800,
+      "sunrise": 1686514241,
+      "sunset": 1686567193,
+      "moonrise": 1686501000,
+      "moonset": 1686545460,
+      "moon_phase": 0.8,
+      "summary": "The day will start with clear sky through the late morning hours, transitioning to partly cloudy",
+      "temp": {
+        "day": 27.27,
+        "min": 19.38,
+        "max": 27.9,
+        "night": 23.48,
+        "eve": 25.22,
+        "morn": 19.38
+      },
+      "feels_like": {
+        "day": 26.91,
+        "night": 23.29,
+        "eve": 25,
+        "morn": 19.2
+      },
+      "pressure": 1009,
+      "humidity": 37,
+      "dew_point": 11.57,
+      "wind_speed": 5.42,
+      "wind_deg": 273,
+      "wind_gust": 5.26,
+      "weather": [
+        {
+          "id": 803,
+          "main": "Clouds",
+          "description": "튼구름",
+          "icon": "04d"
+        }
+      ],
+      "clouds": 83,
+      "pop": 0,
+      "uvi": 8
+    }
+  ]
+}
