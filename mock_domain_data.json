@@ -1,0 +1,139 @@
+[
+   {
+      "date":"datetime.date(2023, 6, 6)",
+      "isHoliday":true,
+      "minimumTemperature":16.42,
+      "maximumTemperature":24.05,
+      "condition":"<Condition.Rain: 2>",
+      "description":"실 비",
+      "isUmbrellaRequired":true,
+      "clothesFileNames":{
+         "minimum":[
+            "clothes_16_1",
+            "clothes_16_2",
+            "clothes_16_3"
+         ],
+         "maximum":[
+            "clothes23_26_1",
+            "clothes23_26_2"
+         ]
+      }
+   },
+   {
+      "date":"datetime.date(2023, 6, 7)",
+      "isHoliday":false,
+      "minimumTemperature":17.54,
+      "maximumTemperature":26.08,
+      "condition":"<Condition.Clouds: 1>",
+      "description":"온흐림",
+      "isUmbrellaRequired":false,
+      "clothesFileNames":{
+         "minimum":[
+            "clothes17_19_1",
+            "clothes17_19_2"
+         ],
+         "maximum":[
+            "clothes_16_1",
+            "clothes_16_2",
+            "clothes_16_3"
+         ]
+      }
+   },
+   {
+      "date":"datetime.date(2023, 6, 8)",
+      "isHoliday":false,
+      "minimumTemperature":18.43,
+      "maximumTemperature":27.08,
+      "condition":"<Condition.Sunny: 0>",
+      "description":"맑음",
+      "isUmbrellaRequired":false,
+      "clothesFileNames":{
+         "minimum":[
+            "clothes17_19_1",
+            "clothes17_19_2"
+         ],
+         "maximum":[
+            "clothes27_1",
+            "clothes27_2"
+         ]
+      }
+   },
+   {
+      "date":"datetime.date(2023, 6, 9)",
+      "isHoliday":false,
+      "minimumTemperature":17.7,
+      "maximumTemperature":25.84,
+      "condition":"<Condition.Rain: 2>",
+      "description":"실 비",
+      "isUmbrellaRequired":true,
+      "clothesFileNames":{
+         "minimum":[
+            "clothes17_19_1",
+            "clothes17_19_2"
+         ],
+         "maximum":[
+            "clothes23_26_1",
+            "clothes23_26_2"
+         ]
+      }
+   },
+   {
+      "date":"datetime.date(2023, 6, 10)",
+      "isHoliday":false,
+      "minimumTemperature":18.23,
+      "maximumTemperature":29.51,
+      "condition":"<Condition.Clouds: 1>",
+      "description":"온흐림",
+      "isUmbrellaRequired":false,
+      "clothesFileNames":{
+         "minimum":[
+            "clothes17_19_1",
+            "clothes17_19_2"
+         ],
+         "maximum":[
+            "clothes27_1",
+            "clothes27_2"
+         ]
+      }
+   },
+   {
+      "date":"datetime.date(2023, 6, 11)",
+      "isHoliday":false,
+      "minimumTemperature":19.72,
+      "maximumTemperature":24.51,
+      "condition":"<Condition.Rain: 2>",
+      "description":"보통 비",
+      "isUmbrellaRequired":true,
+      "clothesFileNames":{
+         "minimum":[
+            "clothes_16_1",
+            "clothes_16_2",
+            "clothes_16_3"
+         ],
+         "maximum":[
+            "clothes23_26_1",
+            "clothes23_26_2"
+         ]
+      }
+   },
+   {
+      "date":"datetime.date(2023, 6, 12)",
+      "isHoliday":false,
+      "minimumTemperature":17.2,
+      "maximumTemperature":26.16,
+      "condition":"<Condition.Rain:2>",
+      "description":"실 비",
+      "isUmbrellaRequired":true,
+      "clothesFileNames":{
+         "minimum":[
+            "clothes17_19_1",
+            "clothes17_19_2"
+         ],
+         "maximum":[
+            "clothes_16_1",
+            "clothes_16_2",
+            "clothes_16_3"
+         ]
+      }
+   }
+]

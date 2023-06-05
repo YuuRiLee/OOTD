@@ -2,8 +2,8 @@ import requests
 import json
 from urllib import parse
 
-baseURL = "https://api.openweathermap.org/data/2.5"
-apiKey = "93b13c5be1a5789936fd3e9ad6f50856"
+baseURL = "https://api.openweathermap.org/data/3.0"
+apiKey = "7ad356131f12d62cacbb82e63b5871f3"
 
 def buildAPIURL(path, parameters):
     url = baseURL + path + "?"

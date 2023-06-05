@@ -12,8 +12,7 @@ soogsil = {
 if __name__ == "__main__":
     forecast.forecast(
         soogsil["latitude"],
-        soogsil["longitude"],
-        50
+        soogsil["longitude"]
     )
 
 interface.createCanvas()
