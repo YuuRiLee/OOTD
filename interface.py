@@ -1,7 +1,9 @@
 import tkinter as tk
 from tkinter import scrolledtext
-from PIL import Image, ImageTk, ImageFont
+from PIL import Image, ImageTk
+
 import daysInterface
+import translate
 
 WIDTH = 892
 HEIGHT = 630
@@ -59,7 +61,7 @@ def createBody():
   nightBodyButton = canvas.create_image(595, 216, image=bodyImage, anchor='nw')
   speechImage = canvas.create_image(42, 407, image=speechBgImage, anchor='nw')
 
-  speechDescription = data[selectedIndex]['description']
+  speechDescription = translate.translateText(data[selectedIndex]['description'])
 
   speechFrame = tk.Frame(canvas, width=500, height=50)
   speechFrame.place(x=110, y=460)
@@ -88,7 +90,7 @@ def createBody():
 def onDayChange(newIndex):
   global selectedIndex
   selectedIndex = newIndex
-  speechDescription = data[selectedIndex]['description']
+  speechDescription = translate.translateText(data[selectedIndex]['description'])
   speechText = bodyButtons[0][1]
   speechText.configure(state="normal")
   speechText.delete("1.0", tk.END)
