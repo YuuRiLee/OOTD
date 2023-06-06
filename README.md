@@ -5,12 +5,14 @@
 ```
 pip install pillow
 pip install requests
+pip install holidays
 ```
 
 ### Use python3
 ```
 pip3 install pillow
 pip3 install requests
+pip3 install holidays
 ```
 ## 실행
 ### Use python
