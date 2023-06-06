@@ -10,13 +10,14 @@ TODAY_INDEX = 1
 DAY_OF_WEEK_KR = ['월', '화', '수', '목', '금', '토', '일']
 
 class DayManager:
-  def __init__(self, canvas, data, selectedIndex):
+  def __init__(self, canvas, data, selectedIndex, callback):
     self.selectedIndex = selectedIndex
     self.canvas = canvas
     self.data = data
     self.dayButtons = []
     self.dayTextImages = []
     self.dayWeatherImages = []
+    self.callback = callback
     
     self.todayBgImage = ImageTk.PhotoImage(Image.open('./assets/img/today_bg.png'))
     selectedToday = Image.open('./assets/img/selected_today_bg.png')
@@ -29,6 +30,7 @@ class DayManager:
   def onDayClick(self, _event, newIndex):
     self.selectedIndex = newIndex
     self.changeDayBg()
+    self.callback(newIndex)
     
   def changeDayBg(self):
     for index in range(DAY_LENGTH):
