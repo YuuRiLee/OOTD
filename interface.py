@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import scrolledtext
 from PIL import Image, ImageTk
+import random
 
 import daysInterface
 import translate
@@ -32,18 +33,42 @@ nightBg = canvas.create_image(HALF_WIDTH - 10, 0, image=nightBgImage, anchor=tk.
 
 speechBubblesImage = ImageTk.PhotoImage(Image.open('./assets/img/speech_bubbles.png'))
 
-speechText = {}
+speechText = None
+selectedClothes = []
+
+clothes = []
 data = []
 # 초기 선택은 오늘 날짜
 selectedIndex = 1
 
+def createClothesImage():
+  for index in range(7):
+    if data[index] is None:
+      clothes.insert(index, (None, None))
+      continue
+
+    minimumClothesList = data[index]['clothesFileNames']['minimum']
+    maximumClothesList = data[index]['clothesFileNames']['maximum']
+    
+    minimumClothes = random.choice(minimumClothesList)
+    maximumClothes = random.choice(maximumClothesList)
+    
+    minimumImage = ImageTk.PhotoImage(Image.open(f'./assets/clothes/{minimumClothes}.png'))
+    maximumImage = ImageTk.PhotoImage(Image.open(f'./assets/clothes/{maximumClothes}.png'))
+  
+    clothes.insert(index, (maximumImage, minimumImage))
+
 def createBody():
-  global bodyImage, speechText
+  global bodyImage, speechText, selectedClothes
   bodyImage = ImageTk.PhotoImage(Image.open('./assets/img/body.png'))
+  [maximumImage, minimumImage] = clothes[selectedIndex]
   canvas.create_image(83, 197, image=bodyImage, anchor='nw')
+  maximumClothes = canvas.create_image(182, 369, image=maximumImage, anchor='nw')
   canvas.create_image(525, 197, image=bodyImage, anchor='nw')
+  minimumClothes = canvas.create_image(619, 363, image=minimumImage, anchor='nw')
   canvas.create_image(42, 457, image=speechBubblesImage, anchor='nw')
 
+  selectedClothes = [maximumClothes, minimumClothes]
   speechDescription = translate.translateText(data[selectedIndex]['description'])
 
   speechFrame = tk.Frame(canvas, width=500, height=50)
@@ -73,12 +98,17 @@ def onDayChange(newIndex):
   speechText.delete("1.0", tk.END)
   speechText.insert(tk.END, speechDescription)
   speechText.configure(state="disabled")
+  
+  [maximumImage, minimumImage] = clothes[selectedIndex]
+  canvas.itemconfig(selectedClothes[0], image = maximumImage)
+  canvas.itemconfig(selectedClothes[1], image = minimumImage)
 
 def createCanvas(initialData):
   global data
   data = [None] + initialData
   dayManager = daysInterface.DayManager(canvas, data, selectedIndex, onDayChange)
   dayManager.createDays()
+  createClothesImage()
   createBody()
 
   root.mainloop()
