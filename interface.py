@@ -146,10 +146,9 @@ def createBody():
   canvas.tag_bind(dayBodyButton, "<Button>", lambda event: onBodyClick(event, 'day'))
   canvas.tag_bind(nightBodyButton, "<Button>", lambda event: onBodyClick(event, 'night'))
   
-def createCanvas():
+def createCanvas(data):
+  print(data)
   crateDays()
   createBody()
 
   root.mainloop()
-  
-createCanvas()
