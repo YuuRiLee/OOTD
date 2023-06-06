@@ -27,9 +27,6 @@ def convertData(data):
         year, month, day = map(int, dateStr.split(", "))
         item["date"] = datetime.date(year, month, day)
 
-        # "Condition" 필드를 문자열에서 Enum으로 변환
-        conditionStr = item["condition"].split(".")[1].split(":")[0]
-        item["condition"] = Condition[conditionStr]
     return data
 
 with open('mock_domain_data.json', 'r') as jsonFile:

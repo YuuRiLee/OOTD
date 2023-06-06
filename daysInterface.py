@@ -87,27 +87,32 @@ class DayManager:
       x = BOX_SPACING + index * (BOX_WIDTH + BOX_SPACING)
       boxX = x + BOX_SPACING
       boxY = 30
-      boxCenterY = BOX_HEIGHT / 2 + 30
       isBillingButton = index == 0
     
       dayButton = self.canvas.create_image(x, boxY, image=dayImage, anchor=tk.NW)
  
       if (isBillingButton == False):
         self.createDayLabel(index)
-        # FIXME 실제 데이터로 변환
-        dayWeatherImage = self.getWeatherImage('01d')
-        nightWeatherImage = self.getWeatherImage('01n')
+        data = self.data[index]
+        dayWeatherImage = self.getWeatherImage(data['condition'])
         labelX = (BOX_WIDTH - self.dayTextImages[index - 1].width()) / 2
         
-        dayText = self.canvas.create_image(x + labelX, boxY + 10, image=self.dayTextImages[index - 1], anchor='nw')
-        dayWeather = self.canvas.create_image(x + 42, boxY + 34, image=dayWeatherImage, anchor='nw')
-        nightWeather = self.canvas.create_image(x + 42, boxCenterY + 16, image=nightWeatherImage, anchor='nw')
+        minimumTemperature = round(self.data[index]['minimumTemperature'])
+        maximumTemperature = round(self.data[index]['maximumTemperature'])
         
-        self.canvas.create_text(boxX + 12, boxY + 56, text="낮", fill="#000000", font=('NanumGothicExtraBold', 12))
-        self.canvas.create_line(boxX, boxCenterY, boxX + 82, boxCenterY, fill="#9A9A9A", width=3)
-        self.canvas.create_text(boxX + 12, boxCenterY + 40, text="밤", fill="#000000", font=('NanumGothicExtraBold', 12))
+        dayText = self.canvas.create_image(x + labelX, boxY + 10, image=self.dayTextImages[index - 1], anchor='nw')
+        
+        self.canvas.create_text(boxX + 14, boxY + 56, text="최고", fill="#000000", font=('NanumGothicExtraBold', 12))
+        self.canvas.create_text(boxX + 70, boxY + 56, text=maximumTemperature, fill="#000000", font=('NanumGothicExtraBold', 16))
+        
+        self.canvas.create_text(boxX + 14, boxY + 92, text="최저", fill="#000000", font=('NanumGothicExtraBold', 12))
+        self.canvas.create_text(boxX + 70, boxY + 92, text=minimumTemperature, fill="#000000", font=('NanumGothicExtraBold', 16))
 
-        self.dayButtons.insert(index, (dayButton, dayText, dayWeather, nightWeather))
+        self.canvas.create_line(boxX, boxY + 120, boxX + 82, boxY + 120, fill="#9A9A9A", width=3)
+        
+        dayWeather = self.canvas.create_image(x + 34, boxY + 128, image=dayWeatherImage, anchor='nw')
+
+        self.dayButtons.insert(index, (dayButton, dayText, dayWeather))
 
         for item in self.dayButtons[index]:
           self.canvas.tag_bind(item, "<Button>", lambda event, index=index: self.onDayClick(event, index))

@@ -4,7 +4,7 @@
       "isHoliday":true,
       "minimumTemperature":16.42,
       "maximumTemperature":24.05,
-      "condition":"<Condition.Rain: 2>",
+      "condition":"01d",
       "description":"실 비",
       "isUmbrellaRequired":true,
       "clothesFileNames":{
@@ -24,7 +24,7 @@
       "isHoliday":false,
       "minimumTemperature":17.54,
       "maximumTemperature":26.08,
-      "condition":"<Condition.Clouds: 1>",
+      "condition":"03d",
       "description":"온흐림",
       "isUmbrellaRequired":false,
       "clothesFileNames":{
@@ -44,7 +44,7 @@
       "isHoliday":false,
       "minimumTemperature":18.43,
       "maximumTemperature":27.08,
-      "condition":"<Condition.Sunny: 0>",
+      "condition":"01d",
       "description":"맑음",
       "isUmbrellaRequired":false,
       "clothesFileNames":{
@@ -63,7 +63,7 @@
       "isHoliday":false,
       "minimumTemperature":17.7,
       "maximumTemperature":25.84,
-      "condition":"<Condition.Rain: 2>",
+      "condition":"04d",
       "description":"실 비",
       "isUmbrellaRequired":true,
       "clothesFileNames":{
@@ -82,7 +82,7 @@
       "isHoliday":false,
       "minimumTemperature":18.23,
       "maximumTemperature":29.51,
-      "condition":"<Condition.Clouds: 1>",
+      "condition":"02d",
       "description":"온흐림",
       "isUmbrellaRequired":false,
       "clothesFileNames":{
@@ -101,7 +101,7 @@
       "isHoliday":false,
       "minimumTemperature":19.72,
       "maximumTemperature":24.51,
-      "condition":"<Condition.Rain: 2>",
+      "condition":"04d",
       "description":"보통 비",
       "isUmbrellaRequired":true,
       "clothesFileNames":{
@@ -121,7 +121,7 @@
       "isHoliday":false,
       "minimumTemperature":17.2,
       "maximumTemperature":26.16,
-      "condition":"<Condition.Rain:2>",
+      "condition":"02d",
       "description":"실 비",
       "isUmbrellaRequired":true,
       "clothesFileNames":{
