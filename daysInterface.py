@@ -32,6 +32,15 @@ class DayManager:
     self.changeDayBg()
     self.callback(newIndex)
     
+  def onBillingClick(self, _event, newIndex):
+    self.selectedIndex = newIndex
+    modal = tk.Toplevel(self.canvas)
+    modal.title("결제 안내")
+    modal.geometry("300x200")
+
+    label = tk.Label(modal, text="어제 데이터는 추가 결제가 필요합니다.")
+    label.pack()
+    
   def changeDayBg(self):
     for index in range(DAY_LENGTH):
       image = self.getDayImage(index)
@@ -72,31 +81,39 @@ class DayManager:
     self.dayTextImages.append(dayTextImage)  # Keep a reference to the image
   
   def createDays(self):
-    for index in range(7):
-      self.createDayLabel(index)
+    for index in range(DAY_LENGTH):
       dayImage = self.getDayImage(index)
-      # FIXME 실제 데이터로 변환
-      dayWeatherImage = self.getWeatherImage('01d')
-      nightWeatherImage = self.getWeatherImage('01n')
       
       x = BOX_SPACING + index * (BOX_WIDTH + BOX_SPACING)
       boxX = x + BOX_SPACING
       boxY = 30
       boxCenterY = BOX_HEIGHT / 2 + 30
-      labelX = (BOX_WIDTH - self.dayTextImages[index].width()) / 2
-
+      isBillingButton = index == 0
+    
       dayButton = self.canvas.create_image(x, boxY, image=dayImage, anchor=tk.NW)
-      dayText = self.canvas.create_image(x + labelX, boxY + 10, image=self.dayTextImages[index], anchor='nw')
-      dayWeather = self.canvas.create_image(x + 42, boxY + 34, image=dayWeatherImage, anchor='nw')
-      nightWeather = self.canvas.create_image(x + 42, boxCenterY + 16, image=nightWeatherImage, anchor='nw')
-      
-      self.dayButtons.insert(index, (dayButton, dayText, dayWeather, nightWeather))
-      
-      self.canvas.create_text(boxX + 12, boxY + 56, text="낮", fill="#000000", font=('NanumGothicExtraBold', 12))
-      self.canvas.create_line(boxX, boxCenterY, boxX + 82, boxCenterY, fill="#9A9A9A", width=3)
-      self.canvas.create_text(boxX + 12, boxCenterY + 40, text="밤", fill="#000000", font=('NanumGothicExtraBold', 12))
+ 
+      if (isBillingButton == False):
+        self.createDayLabel(index)
+        # FIXME 실제 데이터로 변환
+        dayWeatherImage = self.getWeatherImage('01d')
+        nightWeatherImage = self.getWeatherImage('01n')
+        labelX = (BOX_WIDTH - self.dayTextImages[index - 1].width()) / 2
+        
+        dayText = self.canvas.create_image(x + labelX, boxY + 10, image=self.dayTextImages[index - 1], anchor='nw')
+        dayWeather = self.canvas.create_image(x + 42, boxY + 34, image=dayWeatherImage, anchor='nw')
+        nightWeather = self.canvas.create_image(x + 42, boxCenterY + 16, image=nightWeatherImage, anchor='nw')
+        
+        self.canvas.create_text(boxX + 12, boxY + 56, text="낮", fill="#000000", font=('NanumGothicExtraBold', 12))
+        self.canvas.create_line(boxX, boxCenterY, boxX + 82, boxCenterY, fill="#9A9A9A", width=3)
+        self.canvas.create_text(boxX + 12, boxCenterY + 40, text="밤", fill="#000000", font=('NanumGothicExtraBold', 12))
 
-      for item in self.dayButtons[index]:
-        self.canvas.tag_bind(item, "<Button>", lambda event, index=index: self.onDayClick(event, index))
+        self.dayButtons.insert(index, (dayButton, dayText, dayWeather, nightWeather))
+
+        for item in self.dayButtons[index]:
+          self.canvas.tag_bind(item, "<Button>", lambda event, index=index: self.onDayClick(event, index))
+      else:
+        self.dayButtons.insert(index, (dayButton, None, None, None))
+        self.canvas.tag_bind(dayButton, "<Button>", lambda event, index=index: self.onBillingClick(event, index))
+
 
         

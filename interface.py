@@ -99,7 +99,7 @@ def onDayChange(newIndex):
 
 def createCanvas(initialData):
   global data
-  data = initialData
+  data = [None] + initialData
   dayManager = daysInterface.DayManager(canvas, data, selectedIndex, onDayChange)
   dayManager.createDays()
   createBody()
