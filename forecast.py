@@ -64,9 +64,9 @@ def asDomain(dailyWeather):
     isHoliday = getIsHoliday(date)
     minimumTemperature = dailyWeather.get("temp").get("min")
     maximumTemperature = dailyWeather.get("temp").get("max")
-    print(dailyWeather.get("weather")[0].get("description"))
-    description = dailyWeather.get("weather")[0].get("description")
+    description = dailyWeather.get("summary")
     condition = getCondition(dailyWeather.get("weather")[0].get("main"))
+    weatherIconFileName = dailyWeather.get("weather")[0].get("icon")
     isUmbrellaRequired = condition in [Condition.Rain, Condition.Snow]
     clothesFileNames = {
         "minimum": getClothesFileNames(minimumTemperature),
@@ -81,5 +81,6 @@ def asDomain(dailyWeather):
         "condition": condition,
         "description": description,
         "isUmbrellaRequired": isUmbrellaRequired,
-        "clothesFileNames": clothesFileNames
+        "clothesFileNames": clothesFileNames,
+        "weatherIconFileName": weatherIconFileName
     }
