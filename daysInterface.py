@@ -26,6 +26,7 @@ class DayManager:
     selectedOtherDay = Image.open('./assets/img/selected_other_day_bg.png')
     self.selectedOtherDayBgImage = ImageTk.PhotoImage(selectedOtherDay.resize((126, 202), Image.LANCZOS))
     self.dayTextBgImage = Image.open('./assets/img/day_text_bg.png')
+    self.lockIcon = ImageTk.PhotoImage(Image.open('./assets/icon/lock.png'))
 
   def onDayClick(self, _event, newIndex):
     self.selectedIndex = newIndex
@@ -117,8 +118,8 @@ class DayManager:
         for item in self.dayButtons[index]:
           self.canvas.tag_bind(item, "<Button>", lambda event, index=index: self.onDayClick(event, index))
       else:
-        self.dayButtons.insert(index, (dayButton, None, None, None))
-        self.canvas.tag_bind(dayButton, "<Button>", lambda event, index=index: self.onBillingClick(event, index))
+        lockButton = self.canvas.create_image(x + 40, boxY + 77, image=self.lockIcon, anchor=tk.NW)
+        self.dayButtons.insert(index, (dayButton, lockButton))
 
-
-        
+        for item in self.dayButtons[index]:
+          self.canvas.tag_bind(item, "<Button>", lambda event, index=index: self.onBillingClick(event, index))
