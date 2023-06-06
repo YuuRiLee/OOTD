@@ -32,11 +32,6 @@ nightBg = canvas.create_image(HALF_WIDTH - 10, 0, image=nightBgImage, anchor=tk.
 
 speechBubblesImage = ImageTk.PhotoImage(Image.open('./assets/img/speech_bubbles.png'))
 
-# 날짜 선택 UI
-BOX_SPACING = 15
-BOX_WIDTH = 110
-BOX_HEIGHT = 188
-
 speechText = {}
 data = []
 # 초기 선택은 오늘 날짜

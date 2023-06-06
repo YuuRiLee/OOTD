@@ -83,23 +83,23 @@ class DayManager:
   
   def createDays(self):
     for index in range(DAY_LENGTH):
-      dayImage = self.getDayImage(index)
-      
       x = BOX_SPACING + index * (BOX_WIDTH + BOX_SPACING)
       boxX = x + BOX_SPACING
       boxY = 30
       isBillingButton = index == 0
     
+      dayImage = self.getDayImage(index)
       dayButton = self.canvas.create_image(x, boxY, image=dayImage, anchor=tk.NW)
  
       if (isBillingButton == False):
-        self.createDayLabel(index)
         data = self.data[index]
         dayWeatherImage = self.getWeatherImage(data['condition'])
+        
+        self.createDayLabel(index)
         labelX = (BOX_WIDTH - self.dayTextImages[index - 1].width()) / 2
         
-        minimumTemperature = round(self.data[index]['minimumTemperature'])
-        maximumTemperature = round(self.data[index]['maximumTemperature'])
+        minimumTemperature = round(data['minimumTemperature'])
+        maximumTemperature = round(data['maximumTemperature'])
         
         dayText = self.canvas.create_image(x + labelX, boxY + 10, image=self.dayTextImages[index - 1], anchor='nw')
         
