@@ -31,7 +31,6 @@ rightSpeechBubblesImage = ImageTk.PhotoImage(Image.open('./assets/img/right_spee
 
 bodyButtons = []
 
-todayIndex = 1
 # 초기 선택은 오늘 날짜
 selectedIndex = 1
 selectedDay = 'day'
@@ -59,8 +58,7 @@ def createBody():
   canvas.tag_bind(nightBodyButton, "<Button>", lambda event: onBodyClick(event, 'night'))
   
 def createCanvas(data):
-  print(data)
-  dayManager = daysInterface.DayManager(todayIndex, selectedIndex, canvas)
+  dayManager = daysInterface.DayManager(canvas, data, selectedIndex)
   dayManager.createDays()
   createBody()
 

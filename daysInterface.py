@@ -5,12 +5,15 @@ BOX_SPACING = 15
 BOX_WIDTH = 110
 BOX_HEIGHT = 188
 DAY_LENGTH = 7
+TODAY_INDEX = 1
+
+DAY_OF_WEEK_KR = ['월', '화', '수', '목', '금', '토', '일']
 
 class DayManager:
-  def __init__(self, todayIndex, selectedIndex, canvas):
-    self.todayIndex = todayIndex
+  def __init__(self, canvas, data, selectedIndex):
     self.selectedIndex = selectedIndex
     self.canvas = canvas
+    self.data = data
     self.dayButtons = []
     self.dayTextImages = []
     self.dayWeatherImages = []
@@ -33,9 +36,9 @@ class DayManager:
       self.canvas.itemconfig(self.dayButtons[index][0], image = image)
 
   def getDayImage(self, index):
-    if (index == self.todayIndex and index == self.selectedIndex):
+    if (index == TODAY_INDEX and index == self.selectedIndex):
       image = self.selectedTodayBgImage
-    elif (index == self.todayIndex):
+    elif (index == TODAY_INDEX):
       image = self.todayBgImage
     elif (index == self.selectedIndex):
       image = self.selectedOtherDayBgImage
@@ -48,19 +51,22 @@ class DayManager:
     self.dayWeatherImages.append(image)
     
     return image
-  
+
   def createDayLabel(self, index):
-    image_with_text = self.dayTextBgImage.copy()
-    draw = ImageDraw.Draw(image_with_text)
+    imageWithText = self.dayTextBgImage.copy()
+    data = self.data[index]
+    date = data['date']
+    isHoliday = data['isHoliday'] or date.weekday() == 6
+
+    draw = ImageDraw.Draw(imageWithText)
     font = ImageFont.truetype('./assets/font/NanumGothicExtraBold.ttf', 12)
-    text = f"6/{index+1} (목)"
+    text = f"{date.month}/{date.day} ({DAY_OF_WEEK_KR[date.weekday()]})"
     bbox = font.getbbox(text)
     textWidth = bbox[2]-bbox[0]
     x = (self.dayTextBgImage.width - textWidth) / 2
-    isHoliday = False
     textColor = '#B00505' if isHoliday else '#19007E' 
     draw.text((x, 2), text, font=font, fill=textColor)
-    dayTextImage = ImageTk.PhotoImage(image_with_text)
+    dayTextImage = ImageTk.PhotoImage(imageWithText)
     self.dayTextImages.append(dayTextImage)  # Keep a reference to the image
   
   def createDays(self):
