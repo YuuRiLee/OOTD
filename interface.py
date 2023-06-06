@@ -30,41 +30,29 @@ dayBg = canvas.create_image(0, 0, image=dayBgImage, anchor=tk.NW)
 nightBgImage = ImageTk.PhotoImage(Image.open("./assets/img/night_bg.png"))
 nightBg = canvas.create_image(HALF_WIDTH - 10, 0, image=nightBgImage, anchor=tk.NW)
 
+speechBubblesImage = ImageTk.PhotoImage(Image.open('./assets/img/speech_bubbles.png'))
+
 # 날짜 선택 UI
 BOX_SPACING = 15
 BOX_WIDTH = 110
 BOX_HEIGHT = 188
 
-leftSpeechBubblesImage = ImageTk.PhotoImage(Image.open('./assets/img/left_speech_bubbles.png'))
-rightSpeechBubblesImage = ImageTk.PhotoImage(Image.open('./assets/img/right_speech_bubbles.png'))
-
-bodyButtons = []
+speechText = {}
 data = []
 # 초기 선택은 오늘 날짜
 selectedIndex = 1
-selectedDay = 'day'
-
-def onBodyClick(_event, dayType):
-  global selectedDay
-  selectedDay = dayType
-  image = getSpeechImage()
-  canvas.itemconfig(bodyButtons[0][0], image=image)
-
-def getSpeechImage():
-  return leftSpeechBubblesImage if selectedDay == 'day' else rightSpeechBubblesImage
 
 def createBody():
-  global bodyImage
+  global bodyImage, speechText
   bodyImage = ImageTk.PhotoImage(Image.open('./assets/img/body.png'))
-  speechBgImage = getSpeechImage()
-  dayBodyButton = canvas.create_image(136, 216, image=bodyImage, anchor='nw')
-  nightBodyButton = canvas.create_image(595, 216, image=bodyImage, anchor='nw')
-  speechImage = canvas.create_image(42, 407, image=speechBgImage, anchor='nw')
+  canvas.create_image(83, 197, image=bodyImage, anchor='nw')
+  canvas.create_image(525, 197, image=bodyImage, anchor='nw')
+  canvas.create_image(42, 457, image=speechBubblesImage, anchor='nw')
 
   speechDescription = translate.translateText(data[selectedIndex]['description'])
 
   speechFrame = tk.Frame(canvas, width=500, height=50)
-  speechFrame.place(x=110, y=460)
+  speechFrame.place(x=110, y=478)
   speechText = scrolledtext.ScrolledText(
         speechFrame,
         width=48,
@@ -82,16 +70,10 @@ def createBody():
 
   scrollbar.config(command=speechText.yview)
 
-  bodyButtons.insert(0, (speechImage, speechText))
-    
-  canvas.tag_bind(dayBodyButton, "<Button>", lambda event: onBodyClick(event, 'day'))
-  canvas.tag_bind(nightBodyButton, "<Button>", lambda event: onBodyClick(event, 'night'))
-
 def onDayChange(newIndex):
   global selectedIndex
   selectedIndex = newIndex
   speechDescription = translate.translateText(data[selectedIndex]['description'])
-  speechText = bodyButtons[0][1]
   speechText.configure(state="normal")
   speechText.delete("1.0", tk.END)
   speechText.insert(tk.END, speechDescription)
