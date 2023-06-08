@@ -63,9 +63,9 @@ def createBody():
   bodyImage = ImageTk.PhotoImage(Image.open('./assets/img/body.png'))
   [maximumImage, minimumImage] = clothes[selectedIndex]
   canvas.create_image(83, 197, image=bodyImage, anchor='nw')
-  maximumClothes = canvas.create_image(182, 369, image=maximumImage, anchor='nw')
+  maximumClothes = canvas.create_image(175, 355, image=maximumImage, anchor='nw')
   canvas.create_image(525, 197, image=bodyImage, anchor='nw')
-  minimumClothes = canvas.create_image(619, 363, image=minimumImage, anchor='nw')
+  minimumClothes = canvas.create_image(618, 355, image=minimumImage, anchor='nw')
   canvas.create_image(42, 457, image=speechBubblesImage, anchor='nw')
 
   selectedClothes = [maximumClothes, minimumClothes]
