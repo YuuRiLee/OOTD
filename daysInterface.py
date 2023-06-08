@@ -93,7 +93,7 @@ class DayManager:
  
       if (isBillingButton == False):
         data = self.data[index]
-        dayWeatherImage = self.getWeatherImage(data['condition'])
+        dayWeatherImage = self.getWeatherImage(data['weatherIconFileName'])
         
         self.createDayLabel(index)
         labelX = (BOX_WIDTH - self.dayTextImages[index - 1].width()) / 2

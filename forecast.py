@@ -53,11 +53,11 @@ def getClothesFileNames(temperature):
     elif 23 <= temperature <= 26:
         return ["clothes23_26_1", "clothes23_26_2"]
     elif 20 <= temperature <= 22:
-        return ["clothes20_22_1"]
+        return ["clothes20_22_1", "clothes20_22_2"]
     elif 17 <= temperature <= 19:
         return ["clothes17_19_1", "clothes17_19_2"]
     else:
-        return ["clothes_16_1", "clothes_16_2", "clothes_16_3"]
+        return ["clothes_16_1", "clothes_16_2"]
 
 def asDomain(dailyWeather):
     date = datetime.datetime.fromtimestamp(dailyWeather.get("dt")).date()

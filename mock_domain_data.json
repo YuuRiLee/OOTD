@@ -1,31 +1,11 @@
 [
    {
-      "date":"datetime.date(2023, 6, 6)",
-      "isHoliday":true,
-      "minimumTemperature":16.42,
-      "maximumTemperature":24.05,
-      "condition":"01d",
-      "description":"실 비",
-      "isUmbrellaRequired":true,
-      "clothesFileNames":{
-         "minimum":[
-            "clothes_16_1",
-            "clothes_16_2",
-            "clothes_16_3"
-         ],
-         "maximum":[
-            "clothes23_26_1",
-            "clothes23_26_2"
-         ]
-      }
-   },
-   {
-      "date":"datetime.date(2023, 6, 7)",
+      "date": "datetime.date(2023, 6, 8)",
       "isHoliday":false,
-      "minimumTemperature":17.54,
-      "maximumTemperature":26.08,
-      "condition":"03d",
-      "description":"온흐림",
+      "minimumTemperature":18.79,
+      "maximumTemperature":26.20,
+      "condition":"<Condition.Rain:2>",
+      "description":"The sky is clear and some clouds are expected",
       "isUmbrellaRequired":false,
       "clothesFileNames":{
          "minimum":[
@@ -33,20 +13,20 @@
             "clothes17_19_2"
          ],
          "maximum":[
-            "clothes_16_1",
-            "clothes_16_2",
-            "clothes_16_3"
+            "clothes23_26_1",
+            "clothes23_26_2"
          ]
-      }
+      },
+      "weatherIconFileName":"02d"
    },
    {
-      "date":"datetime.date(2023, 6, 8)",
+      "date": "datetime.date(2023, 6, 9)",
       "isHoliday":false,
-      "minimumTemperature":18.43,
-      "maximumTemperature":27.08,
-      "condition":"01d",
-      "description":"맑음",
-      "isUmbrellaRequired":false,
+      "minimumTemperature":19.10,
+      "maximumTemperature":26.9,
+      "condition":"<Condition.Rain:2>",
+      "description":"Expect a day of partly cloudy with rain",
+      "isUmbrellaRequired":true,
       "clothesFileNames":{
          "minimum":[
             "clothes17_19_1",
@@ -56,35 +36,17 @@
             "clothes27_1",
             "clothes27_2"
          ]
-      }
-   },
-   {
-      "date":"datetime.date(2023, 6, 9)",
-      "isHoliday":false,
-      "minimumTemperature":17.7,
-      "maximumTemperature":25.84,
-      "condition":"04d",
-      "description":"실 비",
-      "isUmbrellaRequired":true,
-      "clothesFileNames":{
-         "minimum":[
-            "clothes17_19_1",
-            "clothes17_19_2"
-         ],
-         "maximum":[
-            "clothes23_26_1",
-            "clothes23_26_2"
-         ]
-      }
+      },
+      "weatherIconFileName":"03d"
    },
    {
       "date":"datetime.date(2023, 6, 10)",
       "isHoliday":false,
-      "minimumTemperature":18.23,
-      "maximumTemperature":29.51,
-      "condition":"02d",
-      "description":"온흐림",
-      "isUmbrellaRequired":false,
+      "minimumTemperature":17.90,
+      "maximumTemperature":28.4,
+      "condition":"<Condition.Rain:2>",
+      "description":"Expect a day of partly cloudy with rain",
+      "isUmbrellaRequired":true,
       "clothesFileNames":{
          "minimum":[
             "clothes17_19_1",
@@ -94,35 +56,16 @@
             "clothes27_1",
             "clothes27_2"
          ]
-      }
+      },
+      "weatherIconFileName":"13d"
    },
    {
       "date":"datetime.date(2023, 6, 11)",
       "isHoliday":false,
-      "minimumTemperature":19.72,
-      "maximumTemperature":24.51,
-      "condition":"04d",
-      "description":"보통 비",
-      "isUmbrellaRequired":true,
-      "clothesFileNames":{
-         "minimum":[
-            "clothes_16_1",
-            "clothes_16_2",
-            "clothes_16_3"
-         ],
-         "maximum":[
-            "clothes23_26_1",
-            "clothes23_26_2"
-         ]
-      }
-   },
-   {
-      "date":"datetime.date(2023, 6, 12)",
-      "isHoliday":false,
-      "minimumTemperature":17.2,
-      "maximumTemperature":26.16,
-      "condition":"02d",
-      "description":"실 비",
+      "minimumTemperature":19.23,
+      "maximumTemperature":27.4,
+      "condition":"<Condition.Rain:2>",
+      "description":"There will be clear sky until morning, then partly cloudy",
       "isUmbrellaRequired":true,
       "clothesFileNames":{
          "minimum":[
@@ -130,10 +73,90 @@
             "clothes17_19_2"
          ],
          "maximum":[
-            "clothes_16_1",
-            "clothes_16_2",
-            "clothes_16_3"
+            "clothes27_1",
+            "clothes27_2"
          ]
-      }
+      },
+      "weatherIconFileName":"01d"
+   },
+   {
+      "date":"datetime.date(2023, 6, 12)",
+      "isHoliday":false,
+      "minimumTemperature":18.74,
+      "maximumTemperature":24.56,
+      "condition":"<Condition.Rain:2>",
+      "description":"Heavy rain and lightning are expected throughout the day",
+      "isUmbrellaRequired":true,
+      "clothesFileNames":{
+         "minimum":[
+            "clothes17_19_1",
+            "clothes17_19_2"
+         ],
+         "maximum":[
+            "clothes23_26_1",
+            "clothes23_26_2"
+         ]
+      },
+      "weatherIconFileName":"11d"
+   },
+   {
+      "date":"datetime.date(2023, 6, 13)",
+      "isHoliday":false,
+      "minimumTemperature":21.22,
+      "maximumTemperature":25.28,
+      "condition":"<Condition.Sunny:0>",
+      "description":"You can expect clear sky in the morning, with partly cloudy in the afternoon",
+      "isUmbrellaRequired":false,
+      "clothesFileNames":{
+         "minimum":[
+            "clothes17_19_1",
+            "clothes17_19_2"
+         ],
+         "maximum":[
+            "clothes23_26_1",
+            "clothes23_26_2"
+         ]
+      },
+      "weatherIconFileName":"50d"
+   },
+   {
+      "date":"datetime.date(2023, 6, 14)",
+      "isHoliday":false,
+      "minimumTemperature":18.36,
+      "maximumTemperature":26.25,
+      "condition":"<Condition.Clouds:1>",
+      "description":"There will be partly cloudy today",
+      "isUmbrellaRequired":false,
+      "clothesFileNames":{
+         "minimum":[
+            "clothes17_19_1",
+            "clothes17_19_2"
+         ],
+         "maximum":[
+            "clothes_16_1",
+            "clothes_16_2"
+         ]
+      },
+      "weatherIconFileName":"04d"
+   },
+   {
+      "date":"datetime.date(2023, 6, 15)",
+      "isHoliday":false,
+      "minimumTemperature":19.01,
+      "maximumTemperature":28.78,
+      "condition":"<Condition.Rain:2>",
+      "description":"Expect a day of partly cloudy with rain",
+      "isUmbrellaRequired":true,
+      "clothesFileNames":{
+         "minimum":[
+            "clothes_16_1",
+            "clothes_16_2"
+         ],
+         "maximum":[
+            "clothes27_1",
+            "clothes27_2"
+         ]
+      },
+      "weatherIconFileName":"10d"
    }
 ]
