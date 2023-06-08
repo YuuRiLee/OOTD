@@ -50,11 +50,11 @@ def getIsHoliday(date, country ="KR"):
 def getClothesFileNames(temperature):
     if temperature >= 27:
         return ["clothes27_1", "clothes27_2"]
-    elif 23 <= temperature <= 26:
+    elif 23 <= temperature <= 26.99:
         return ["clothes23_26_1", "clothes23_26_2"]
-    elif 20 <= temperature <= 22:
+    elif 20 <= temperature <= 22.99:
         return ["clothes20_22_1", "clothes20_22_2"]
-    elif 17 <= temperature <= 19:
+    elif 17 <= temperature <= 19.99:
         return ["clothes17_19_1", "clothes17_19_2"]
     else:
         return ["clothes_16_1", "clothes_16_2"]
