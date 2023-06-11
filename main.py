@@ -1,8 +1,5 @@
 import forecast
 import interface
-import json
-import datetime
-from enum import Enum
 
 soogsil = {
     "latitude": 37.494705526855,
@@ -10,9 +7,10 @@ soogsil = {
 }
 
 if __name__ == "__main__":
+    # 날씨 예측 API 호출
     data = forecast.forecast(
         soogsil["latitude"],
         soogsil["longitude"]
     )
-
+# Tkinter를 통해 UI 빌드
 interface.createCanvas(data)

@@ -4,6 +4,7 @@ import holidays
 import json
 import remoteAPI
 
+# parameter 데이터 받고, RemoteAPI 호출
 def forecast(
         latitude,
         longitude,
@@ -59,6 +60,7 @@ def getClothesFileNames(temperature):
     else:
         return ["clothes_16_1", "clothes_16_2"]
 
+# UI 표현에 필요한 데이터로 변경 및 전달
 def asDomain(dailyWeather):
     date = datetime.datetime.fromtimestamp(dailyWeather.get("dt")).date()
     isHoliday = getIsHoliday(date)
