@@ -19,6 +19,7 @@ textContainer = tk.Canvas(root, width=200, height=100, bd=0, highlightthickness=
 
 canvas.place(x=0, y=0)
 
+# 날씨 description이 길어졌을 때 scroll 추가
 scrollbar = tk.Scrollbar(textContainer, orient=tk.VERTICAL)
 canvas.configure(yscrollcommand=scrollbar.set)
 scrollbar.pack(side=tk.RIGHT, fill=tk.Y, padx=0, pady=0)
@@ -41,6 +42,7 @@ data = []
 # 초기 선택은 오늘 날짜
 selectedIndex = 1
 
+# 최고 온도, 최저 온도에 따른 옷차림 image 반환
 def createClothesImage():
   for index in range(7):
     if data[index] is None:
@@ -50,14 +52,17 @@ def createClothesImage():
     minimumClothesList = data[index]['clothesFileNames']['minimum']
     maximumClothesList = data[index]['clothesFileNames']['maximum']
     
+    # 각 기온에 따른 옷차림을 랜덤하게 추출
     minimumClothes = random.choice(minimumClothesList)
     maximumClothes = random.choice(maximumClothesList)
     
     minimumImage = ImageTk.PhotoImage(Image.open(f'./assets/clothes/{minimumClothes}.png'))
     maximumImage = ImageTk.PhotoImage(Image.open(f'./assets/clothes/{maximumClothes}.png'))
   
+    # 날짜를 변경해도 랜덤하게 결정된 옷차림 데이터는 변경되지 않도록 변수에 저장
     clothes.insert(index, (maximumImage, minimumImage))
 
+# 마스코트(슝슝이) 그리기
 def createBody():
   global bodyImage, speechText, selectedClothes
   bodyImage = ImageTk.PhotoImage(Image.open('./assets/img/body.png'))
@@ -73,6 +78,7 @@ def createBody():
 
   speechFrame = tk.Frame(canvas, width=500, height=50)
   speechFrame.place(x=110, y=478)
+  # 날씨 description 영역에 최대 width와 최대 height 지정
   speechText = scrolledtext.ScrolledText(
         speechFrame,
         width=48,
@@ -90,10 +96,13 @@ def createBody():
 
   scrollbar.config(command=speechText.yview)
 
+# 날짜 클릭했을 때 description 업데이트
 def onDayChange(newIndex):
   global selectedIndex
   selectedIndex = newIndex
-  speechDescription = translate.translateText(data[selectedIndex]['description'])
+  # 영어로된 description을 한국어로 번역
+  speechDescription = translate.translatedText(data[selectedIndex]['description'])
+  # description을 변경하기 위해 normal로 상태 변경
   speechText.configure(state="normal")
   speechText.delete("1.0", tk.END)
   speechText.insert(tk.END, speechDescription)

@@ -16,7 +16,8 @@ request = urllib.request.Request(url)
 request.add_header("X-Naver-Client-Id", clientId)
 request.add_header("X-Naver-Client-Secret", clientSecret)
 
-def translateText(text):
+# 영어로된 description을 한국어로 번역
+def translatedText(text):
   encText = urllib.parse.quote(text)
   data = "source=en&target=ko&text=" + encText
   response = urllib.request.urlopen(request, data=data.encode("utf-8"), context=context)
