@@ -74,7 +74,7 @@ def createBody():
   canvas.create_image(42, 457, image=speechBubblesImage, anchor='nw')
 
   selectedClothes = [maximumClothes, minimumClothes]
-  speechDescription = translate.translateText(data[selectedIndex]['description'])
+  speechDescription = translate.translatedText(data[selectedIndex]['description'])
 
   speechFrame = tk.Frame(canvas, width=500, height=50)
   speechFrame.place(x=110, y=478)
